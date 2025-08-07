@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8"/>
+        <script src="wasm_exec.js"></script>
+        <script>
+            const go = new Go();
+            WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
+                go.run(result.instance);
+            });
+        </script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Othello</h1>
+        <table class="board">
+            <tr>
+                <td class="cell"><input type="button" class="cell-button" value="" id="00" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="01" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="02" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="03" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="04" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="05" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="06" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="07" /></td>
+
+            </tr>
+            <tr>
+                <td class="cell"><input type="button" class="cell-button" value="" id="10" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="11" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="12" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="13" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="14" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="15" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="16" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="17" /></td>
+            </tr>
+            <tr>
+                <td class="cell"><input type="button" class="cell-button" value="" id="20" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="21" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="22" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="23" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="24" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="25" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="26" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="27" /></td>
+            </tr>
+            <tr>
+                <td class="cell"><input type="button" class="cell-button" value="" id="30" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="31" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="32" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="33" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="34" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="35" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="36" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="37" /></td>
+            </tr>
+            <tr>
+                <td class="cell"><input type="button" class="cell-button" value="" id="40" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="41" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="42" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="43" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="44" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="45" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="46" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="47" /></td>
+            </tr>
+            <tr>
+                <td class="cell"><input type="button" class="cell-button" value="" id="50" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="51" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="52" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="53" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="54" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="55" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="56" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="57" /></td>
+            </tr>
+            <tr>
+                <td class="cell"><input type="button" class="cell-button" value="" id="60" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="61" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="62" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="63" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="64" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="65" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="66" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="67" /></td>
+            </tr>
+            <tr>
+                <td class="cell"><input type="button" class="cell-button" value="" id="70" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="71" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="72" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="73" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="74" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="75" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="76" /></td>
+                <td class="cell"><input type="button" class="cell-button" value="" id="77" /></td>
+            </tr>
+        </table>
+    </body>
+</html>

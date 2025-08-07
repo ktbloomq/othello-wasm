@@ -1,0 +1,7 @@
+services:
+  apache:
+    image: docker.io/library/httpd:latest
+    volumes:
+      - ./web:/usr/local/apache2/htdocs/:rw
+    ports:
+      - 8080:80
