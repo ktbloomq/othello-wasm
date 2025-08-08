@@ -4,12 +4,6 @@
     <meta charset="utf-8" />
     <title>Othello</title>
     <script src="wasm_exec.js"></script>
-    <script>
-        const go = new Go();
-        WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
-            go.run(result.instance);
-        });
-    </script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,341 +11,219 @@
     <table class="board">
         <tr>
             <td class="cell"><button type="button" class="cell-button" id="00">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="01">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="02">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="03">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="04">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="05">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="06">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="07">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
         </tr>
         <tr>
             <td class="cell"><button type="button" class="cell-button" id="10">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="11">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="12">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="13">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="14">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="15">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="16">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="17">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
         </tr>
         <tr>
             <td class="cell"><button type="button" class="cell-button" id="20">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="21">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="22">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="23">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="24">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="25">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="26">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="27">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
         </tr>
         <tr>
             <td class="cell"><button type="button" class="cell-button" id="30">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="31">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="32">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="33">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="34">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="35">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="36">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="37">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
         </tr>
         <tr>
             <td class="cell"><button type="button" class="cell-button" id="40">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="41">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="42">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="43">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="44">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="45">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="46">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="47">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
         </tr>
         <tr>
             <td class="cell"><button type="button" class="cell-button" id="50">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="51">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="52">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="53">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="54">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="55">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="56">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="57">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
         </tr>
         <tr>
             <td class="cell"><button type="button" class="cell-button" id="60">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="61">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="62">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="63">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="64">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="65">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="66">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="67">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
         </tr>
         <tr>
             <td class="cell"><button type="button" class="cell-button" id="70">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="71">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="72">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="73">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="74">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="75">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="76">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
             <td class="cell"><button type="button" class="cell-button" id="77">
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle r="45" cx="50" cy="50" fill="white" />
-                    </svg>
+                    <img src="chip.svg" alt="" srcset="">
                 </button></td>
         </tr>
     </table>
+    <script>
+        const go = new Go();
+        WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
+            go.run(result.instance);
+        });
+    </script>
 </body>
 
 </html>

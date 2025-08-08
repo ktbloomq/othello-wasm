@@ -15,6 +15,7 @@ type Board struct {
 	validMoves  [][2]int
 	whites      int
 	blacks      int
+	skipped     int
 }
 
 func (board *Board) constructBoard() {
@@ -31,6 +32,7 @@ func (board *Board) constructBoard() {
 	board.opponent = 'w'
 	board.whites = 2
 	board.blacks = 2
+	board.skipped = 0
 
 	var cell *dom.HTMLButtonElement
 	for i := 0; i < 8; i++ {
@@ -100,11 +102,15 @@ func (board *Board) updateValidMoves() {
 		for j := 0; j < 8; j++ {
 			if board.Grid[i][j] == ' ' {
 				if board.checkValid(i, j) {
+					fmt.Printf("Valid: %d-%d\n", i, j)
 					board.validMoves = append(board.validMoves, [2]int{i, j})
 					board.displayGrid[i][j].Class().Add("hilight")
 				}
 			}
 		}
+	}
+	if len(board.validMoves) == 0 {
+		board.skipMove()
 	}
 }
 
@@ -120,6 +126,7 @@ func (board *Board) flank(row int, col int, dir [2]int) {
 func (board *Board) playMove(row int, col int) error {
 	var err error
 	if row >= 0 && row <= 7 && col >= 0 && col <= 7 && board.Grid[row][col] == ' ' {
+		board.skipped = 0
 		directions := [...][2]int{{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}}
 		for _, dir := range directions {
 			if board.checkFlankDir(row, col, dir) {
@@ -135,4 +142,34 @@ func (board *Board) playMove(row int, col int) error {
 		return err
 	}
 	return err
+}
+
+func (board *Board) skipMove() {
+	// dom.GetWindow().Alert("You have no moves. Skipping turn")
+	fmt.Println("You have no moves. Skipping turn")
+	tmp := board.opponent
+	board.opponent = board.self
+	board.self = tmp
+	board.skipped++
+
+	if board.checkWin() {
+		board.endGame()
+	} else {
+		board.drawBoard()
+	}
+}
+
+func (board *Board) checkWin() bool {
+	return board.skipped >= 2 || board.blacks == 0 || board.whites == 0 || board.blacks+board.whites == 64
+}
+
+func (board *Board) endGame() {
+	if board.blacks > board.whites {
+		dom.GetWindow().Alert("Black Wins!")
+	} else if board.blacks < board.whites {
+		dom.GetWindow().Alert("White Wins!")
+	} else {
+		dom.GetWindow().Alert("Tie Game!")
+
+	}
 }
