@@ -12,6 +12,8 @@ type Board struct {
 	self       rune
 	opponent   rune
 	validMoves [][2]int
+	whites     int
+	blacks     int
 }
 
 func (board *Board) constructBoard() {
@@ -26,31 +28,33 @@ func (board *Board) constructBoard() {
 		{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}}
 	board.self = 'b'
 	board.opponent = 'w'
+	board.whites = 2
+	board.blacks = 2
 
-	var cell *dom.HTMLInputElement
+	var cell *dom.HTMLButtonElement
 	for i := 0; i < 8; i++ {
 		for j := 0; j < 8; j++ {
-			cell = dom.GetWindow().Document().GetElementByID(fmt.Sprintf("%d%d", i, j)).(*dom.HTMLInputElement)
+			cell = dom.GetWindow().Document().GetElementByID(fmt.Sprintf("%d%d", i, j)).(*dom.HTMLButtonElement)
 			cell.AddEventListener("click", false, handleMove)
 		}
 	}
 }
 
 func (board *Board) drawBoard() {
-	var cell *dom.HTMLInputElement
+	var cell *dom.HTMLButtonElement
 	for i := 0; i < 8; i++ {
 		for j := 0; j < 8; j++ {
-			cell = dom.GetWindow().Document().GetElementByID(fmt.Sprintf("%d%d", i, j)).(*dom.HTMLInputElement)
+			cell = dom.GetWindow().Document().GetElementByID(fmt.Sprintf("%d%d", i, j)).(*dom.HTMLButtonElement)
 			cell.Class().Remove("hilight")
 			switch board.Grid[i][j] {
 			case 'b':
-				cell.SetValue("⬤")
 				cell.Class().Remove("white")
 				cell.Class().Add("black")
+				board.blacks++
 			case 'w':
-				cell.SetValue("⬤")
 				cell.Class().Remove("black")
 				cell.Class().Add("white")
+				board.whites++
 			}
 		}
 	}
@@ -73,11 +77,11 @@ func (board *Board) checkFlankDir(row int, col int, dir [2]int) bool {
 func (board *Board) checkValid(row int, col int) bool {
 	directions := [...][2]int{{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}}
 	result := false
-	fmt.Printf("checking %d-%d\n", row, col)
+	// fmt.Printf("checking %d-%d\n", row, col)
 	for _, dir := range directions {
 		if row+dir[0] >= 0 && row+dir[0] <= 7 && col+dir[1] >= 0 && col+dir[1] <= 7 {
 			if board.Grid[row+dir[0]][col+dir[1]] == board.opponent {
-				fmt.Printf("dir%d\n", dir)
+				// fmt.Printf("dir%d\n", dir)
 				result = board.checkFlankDir(row+dir[0], col+dir[1], dir)
 				if result == true {
 					return true

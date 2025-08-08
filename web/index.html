@@ -1,99 +1,357 @@
 <!DOCTYPE html>
-    <head>
-        <meta charset="utf-8"/>
-        <script src="wasm_exec.js"></script>
-        <script>
-            const go = new Go();
-            WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
-                go.run(result.instance);
-            });
-        </script>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <h1>Othello</h1>
-        <table class="board">
-            <tr>
-                <td class="cell"><input type="button" class="cell-button" value="" id="00" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="01" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="02" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="03" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="04" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="05" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="06" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="07" /></td>
 
-            </tr>
-            <tr>
-                <td class="cell"><input type="button" class="cell-button" value="" id="10" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="11" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="12" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="13" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="14" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="15" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="16" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="17" /></td>
-            </tr>
-            <tr>
-                <td class="cell"><input type="button" class="cell-button" value="" id="20" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="21" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="22" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="23" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="24" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="25" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="26" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="27" /></td>
-            </tr>
-            <tr>
-                <td class="cell"><input type="button" class="cell-button" value="" id="30" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="31" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="32" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="33" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="34" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="35" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="36" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="37" /></td>
-            </tr>
-            <tr>
-                <td class="cell"><input type="button" class="cell-button" value="" id="40" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="41" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="42" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="43" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="44" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="45" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="46" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="47" /></td>
-            </tr>
-            <tr>
-                <td class="cell"><input type="button" class="cell-button" value="" id="50" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="51" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="52" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="53" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="54" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="55" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="56" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="57" /></td>
-            </tr>
-            <tr>
-                <td class="cell"><input type="button" class="cell-button" value="" id="60" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="61" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="62" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="63" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="64" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="65" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="66" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="67" /></td>
-            </tr>
-            <tr>
-                <td class="cell"><input type="button" class="cell-button" value="" id="70" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="71" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="72" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="73" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="74" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="75" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="76" /></td>
-                <td class="cell"><input type="button" class="cell-button" value="" id="77" /></td>
-            </tr>
-        </table>
-    </body>
+<head>
+    <meta charset="utf-8" />
+    <title>Othello</title>
+    <script src="wasm_exec.js"></script>
+    <script>
+        const go = new Go();
+        WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
+            go.run(result.instance);
+        });
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <table class="board">
+        <tr>
+            <td class="cell"><button type="button" class="cell-button" id="00">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="01">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="02">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="03">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="04">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="05">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="06">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="07">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+        </tr>
+        <tr>
+            <td class="cell"><button type="button" class="cell-button" id="10">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="11">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="12">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="13">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="14">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="15">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="16">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="17">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+        </tr>
+        <tr>
+            <td class="cell"><button type="button" class="cell-button" id="20">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="21">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="22">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="23">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="24">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="25">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="26">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="27">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+        </tr>
+        <tr>
+            <td class="cell"><button type="button" class="cell-button" id="30">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="31">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="32">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="33">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="34">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="35">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="36">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="37">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+        </tr>
+        <tr>
+            <td class="cell"><button type="button" class="cell-button" id="40">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="41">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="42">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="43">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="44">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="45">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="46">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="47">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+        </tr>
+        <tr>
+            <td class="cell"><button type="button" class="cell-button" id="50">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="51">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="52">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="53">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="54">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="55">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="56">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="57">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+        </tr>
+        <tr>
+            <td class="cell"><button type="button" class="cell-button" id="60">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="61">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="62">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="63">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="64">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="65">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="66">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="67">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+        </tr>
+        <tr>
+            <td class="cell"><button type="button" class="cell-button" id="70">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="71">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="72">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="73">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="74">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="75">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="76">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+            <td class="cell"><button type="button" class="cell-button" id="77">
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="45" cx="50" cy="50" fill="white" />
+                    </svg>
+                </button></td>
+        </tr>
+    </table>
+</body>
+
 </html>
