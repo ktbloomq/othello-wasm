@@ -8,12 +8,13 @@ import (
 )
 
 type Board struct {
-	Grid       [8][8]rune
-	self       rune
-	opponent   rune
-	validMoves [][2]int
-	whites     int
-	blacks     int
+	Grid        [8][8]rune
+	displayGrid [8][8]*dom.HTMLButtonElement
+	self        rune
+	opponent    rune
+	validMoves  [][2]int
+	whites      int
+	blacks      int
 }
 
 func (board *Board) constructBoard() {
@@ -35,6 +36,7 @@ func (board *Board) constructBoard() {
 	for i := 0; i < 8; i++ {
 		for j := 0; j < 8; j++ {
 			cell = dom.GetWindow().Document().GetElementByID(fmt.Sprintf("%d%d", i, j)).(*dom.HTMLButtonElement)
+			board.displayGrid[i][j] = cell
 			cell.AddEventListener("click", false, handleMove)
 		}
 	}
@@ -44,7 +46,7 @@ func (board *Board) drawBoard() {
 	var cell *dom.HTMLButtonElement
 	for i := 0; i < 8; i++ {
 		for j := 0; j < 8; j++ {
-			cell = dom.GetWindow().Document().GetElementByID(fmt.Sprintf("%d%d", i, j)).(*dom.HTMLButtonElement)
+			cell = board.displayGrid[i][j]
 			cell.Class().Remove("hilight")
 			switch board.Grid[i][j] {
 			case 'b':
@@ -83,7 +85,7 @@ func (board *Board) checkValid(row int, col int) bool {
 			if board.Grid[row+dir[0]][col+dir[1]] == board.opponent {
 				// fmt.Printf("dir%d\n", dir)
 				result = board.checkFlankDir(row+dir[0], col+dir[1], dir)
-				if result == true {
+				if result {
 					return true
 				}
 			}
@@ -99,7 +101,7 @@ func (board *Board) updateValidMoves() {
 			if board.Grid[i][j] == ' ' {
 				if board.checkValid(i, j) {
 					board.validMoves = append(board.validMoves, [2]int{i, j})
-					dom.GetWindow().Document().GetElementByID(fmt.Sprintf("%d%d", i, j)).Class().Add("hilight")
+					board.displayGrid[i][j].Class().Add("hilight")
 				}
 			}
 		}
