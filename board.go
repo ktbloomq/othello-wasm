@@ -34,10 +34,11 @@ func (board *Board) constructBoard() {
 	board.blacks = 2
 	board.skipped = 0
 
+	document := dom.GetWindow().Document()
 	var cell *dom.HTMLButtonElement
 	for i := 0; i < 8; i++ {
 		for j := 0; j < 8; j++ {
-			cell = dom.GetWindow().Document().GetElementByID(fmt.Sprintf("%d%d", i, j)).(*dom.HTMLButtonElement)
+			cell = document.GetElementByID(fmt.Sprintf("%d%d", i, j)).(*dom.HTMLButtonElement)
 			board.displayGrid[i][j] = cell
 			cell.AddEventListener("click", false, handleMove)
 		}
@@ -102,7 +103,7 @@ func (board *Board) updateValidMoves() {
 		for j := 0; j < 8; j++ {
 			if board.Grid[i][j] == ' ' {
 				if board.checkValid(i, j) {
-					fmt.Printf("Valid: %d-%d\n", i, j)
+					// fmt.Printf("Valid: %d-%d\n", i, j)
 					board.validMoves = append(board.validMoves, [2]int{i, j})
 					board.displayGrid[i][j].Class().Add("hilight")
 				}
@@ -116,6 +117,7 @@ func (board *Board) updateValidMoves() {
 
 func (board *Board) flank(row int, col int, dir [2]int) {
 	board.Grid[row][col] = board.self
+	board.displayGrid[row][col].Class().Add("flip")
 	cell := board.Grid[row+dir[0]][col+dir[1]]
 	switch cell {
 	case board.opponent:
@@ -130,7 +132,8 @@ func (board *Board) playMove(row int, col int) error {
 		directions := [...][2]int{{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}}
 		for _, dir := range directions {
 			if board.checkFlankDir(row, col, dir) {
-				board.flank(row, col, dir)
+				board.Grid[row][col] = board.self
+				board.flank(row+dir[0], col+dir[1], dir)
 			}
 		}
 

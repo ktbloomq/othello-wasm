@@ -1,11 +1,13 @@
+:root {
+    color-scheme: light dark;
+}
+
 .board {
     border-collapse: collapse;
-    /* width: 99vmin; */
-    /* height: 99vmin; */
 }
 
 .cell {
-    border: solid;
+    border: solid black;
     background-color: green;
     text-align: center;
 }
@@ -17,19 +19,49 @@
     border: unset;
 }
 
-.cell-button > img {
+.cell-button>img {
     opacity: 0;
     pointer-events: none;
 }
 
-.black > img {
+@keyframes flipBlack {
+    0% {
+        transform: rotate3d(1, 1, 0, 0deg);
+        filter: invert(1);
+    }
+
+    100% {
+        transform: rotate3d(1, 1, 0, 180deg);
+        filter: invert(0);
+    }
+}
+
+@keyframes flipWhite {
+    0% {
+        transform: rotate3d(1, 1, 0, 180deg);
+        filter: invert(0);
+
+    }
+
+    100% {
+        transform: rotate3d(1, 1, 0, 0deg);
+        filter: invert(1);
+    }
+}
+
+.black>img {
+    opacity: 1;
+}
+.black.flip>img {
+    animation: flipBlack 2000ms 1 ease forwards;
+}
+
+.white>img {
     opacity: 1;
     filter: invert(1);
 }
-
-.white > img {
-    opacity: 1;
-    filter: invert(0);
+.white.flip>img {
+    animation: flipWhite 2000ms 1 ease forwards;
 }
 
 .hilight {
