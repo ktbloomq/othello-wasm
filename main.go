@@ -2,43 +2,37 @@ package main
 
 import (
 	"fmt"
-	"strconv"
-
-	"honnef.co/go/js/dom/v2"
+	"syscall/js"
 )
 
-func handleMove(event dom.Event) {
-	idString := event.Target().ID()
-	id, err := strconv.ParseInt(idString, 10, 64)
-	if err != nil {
-		fmt.Printf("Move Error: Couldn't parse cell id. %s", err.Error())
-	}
-	// fmt.Println(idString)
-
-	row := int(id / 10)
-	col := int(id % 10)
+func handleMove(this js.Value, args []js.Value) interface{} {
+	var result interface{}
+	row := args[0].Int()
+	col := args[1].Int()
 
 	isValid := false
-	for _, valid := range board.validMoves {
+	for _, valid := range board.ValidMoves {
 		if valid[0] == row && valid[1] == col {
 			isValid = true
 			break
 		}
 	}
 	if isValid {
-		err = board.playMove(row, col)
+		err := board.playMove(row, col)
 		if err != nil {
 			fmt.Println(err.Error())
 		}
 		board.drawBoard()
 	}
+	return result
 }
 
 var board Board
 
 func main() {
+	js.Global().Set("handleMove", js.FuncOf(handleMove))
 	board.constructBoard()
 	board.drawBoard()
 
-	select {}
+	<-make(chan struct{})
 }
