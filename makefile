@@ -1,5 +1,7 @@
+GOROOT := $(shell go env GOROOT)
+
 download:
-	cp "$(go env GOROOT)/lib/wasm/wasm_exec.js" /web
+	cp "$(GOROOT)/lib/wasm/wasm_exec.js" ./web
 	go mod download
 build:
 	GOOS=js GOARCH=wasm go build -o web/main.wasm
