@@ -30,6 +30,14 @@
         filter: invert(1);
     }
 
+    29.333% {
+        filter: invert(1);
+    }
+
+    29.334% {
+        filter: invert(0);
+    }
+
     100% {
         transform: rotate3d(1, 1, 0, 180deg);
         filter: invert(0);
@@ -43,6 +51,14 @@
 
     }
 
+    29.333% {
+        filter: invert(0);
+    }
+
+    29.334% {
+        filter: invert(1);
+    }
+
     100% {
         transform: rotate3d(1, 1, 0, 0deg);
         filter: invert(1);
@@ -51,6 +67,7 @@
 
 .black>img {
     opacity: 1;
+    transform: rotate3d(1, 1, 0, 180deg);
 }
 .black.flip>img {
     animation: flipBlack 2000ms 1 ease forwards;
